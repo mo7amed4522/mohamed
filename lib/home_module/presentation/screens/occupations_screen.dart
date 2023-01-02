@@ -320,25 +320,45 @@ class OccupationsScreen extends StatelessWidget {
                                                             "تغيير الاشغال",
                                                           ),
                                                           actions: [
-                                                            defaultTextForm(
-                                                              color:
-                                                                  Colors.black,
-                                                              controller:
-                                                                  TextEditingController(
-                                                                text: HomeCubit.get(
-                                                                        context)
-                                                                    .occupation!
-                                                                    .data[index]
-                                                                    .name!,
-                                                              ),
-                                                              keyboardType:
-                                                                  TextInputType
-                                                                      .emailAddress,
-                                                              onTap: () {},
-                                                              label: "",
-                                                              prefix:
-                                                                  Icons.edit,
-                                                              validate: () {},
+                                                            Row(
+                                                              children: [
+                                                                defaultTextForm(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  controller:
+                                                                      TextEditingController(
+                                                                    text: HomeCubit.get(
+                                                                            context)
+                                                                        .occupation!
+                                                                        .data[
+                                                                            index]
+                                                                        .name!,
+                                                                  ),
+                                                                  keyboardType:
+                                                                      TextInputType
+                                                                          .emailAddress,
+                                                                  onTap: () {},
+                                                                  label: "",
+                                                                  prefix: Icons
+                                                                      .edit,
+                                                                  validate:
+                                                                      () {},
+                                                                ),
+                                                                GestureDetector(
+                                                                  child:
+                                                                      const Text(
+                                                                    "تعديل",
+                                                                  ),
+                                                                  onTap: () {},
+                                                                ),
+                                                                GestureDetector(
+                                                                  child:
+                                                                      const Text(
+                                                                    "حذف",
+                                                                  ),
+                                                                  onTap: () {},
+                                                                ),
+                                                              ],
                                                             ),
                                                           ],
                                                         ),
