@@ -48,7 +48,10 @@ class AddOccupationScreen extends StatelessWidget {
               centerTitle: true,
               title: Text(
                 'الاشغالات',
-                style: TextStyle(fontSize: 15.sp, color: Colors.white),
+                style: TextStyle(
+                  fontSize: 15.sp,
+                  color: Colors.white,
+                ),
               ),
             ),
             backgroundColor: const Color(0xFF3F4048),
@@ -470,21 +473,65 @@ class AddOccupationScreen extends StatelessWidget {
                         child: MaterialButton(
                           onPressed: () async {
                             if (formKey.currentState!.validate()) {
-                              HomeCubit.get(context).insertFile(
-                                name: facilityName.text,
-                                address: address.text,
-                                owner: ownerName.text,
-                                number: cellNumber.text,
-                                idCard: nationalID_Otp!,
-                                phone: phone_otp!,
-                                date1: datetime1,
-                                date2: datetime2,
-                                choice: HomeCubit.get(context).num,
-                                idOccupation: idOccupation2,
-                                file: w!,
-                                image: img!,
-                                scan: s!,
-                              );
+                              if (img == null && s == null) {
+                                HomeCubit.get(context).insertFile0(
+                                  name: facilityName.text,
+                                  address: address.text,
+                                  owner: ownerName.text,
+                                  number: cellNumber.text,
+                                  idCard: nationalID_Otp!,
+                                  phone: phone_otp!,
+                                  date1: datetime1,
+                                  date2: datetime2,
+                                  choice: HomeCubit.get(context).num,
+                                  idOccupation: idOccupation2,
+                                  file: w!,
+                                );
+                              } else if (s == null) {
+                                HomeCubit.get(context).insertFile1(
+                                    name: facilityName.text,
+                                    address: address.text,
+                                    owner: ownerName.text,
+                                    number: cellNumber.text,
+                                    idCard: nationalID_Otp!,
+                                    phone: phone_otp!,
+                                    date1: datetime1,
+                                    date2: datetime2,
+                                    choice: HomeCubit.get(context).num,
+                                    idOccupation: idOccupation2,
+                                    file: w!,
+                                    image: img!);
+                              } else if (img == null) {
+                                HomeCubit.get(context).insertFile2(
+                                    name: facilityName.text,
+                                    address: address.text,
+                                    owner: ownerName.text,
+                                    number: cellNumber.text,
+                                    idCard: nationalID_Otp!,
+                                    phone: phone_otp!,
+                                    date1: datetime1,
+                                    date2: datetime2,
+                                    choice: HomeCubit.get(context).num,
+                                    idOccupation: idOccupation2,
+                                    file: w!,
+                                    scan: s!);
+                              } else {
+                                HomeCubit.get(context).insertFile(
+                                  name: facilityName.text,
+                                  address: address.text,
+                                  owner: ownerName.text,
+                                  number: cellNumber.text,
+                                  idCard: nationalID_Otp!,
+                                  phone: phone_otp!,
+                                  date1: datetime1,
+                                  date2: datetime2,
+                                  choice: HomeCubit.get(context).num,
+                                  idOccupation: idOccupation2,
+                                  file: w!,
+                                  scan: s!,
+                                  image: img!,
+                                );
+                              }
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(

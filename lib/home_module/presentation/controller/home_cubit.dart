@@ -279,6 +279,151 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
+  insertFile0({
+    required String name,
+    required String address,
+    required String owner,
+    required String number,
+    required String idCard,
+    required String phone,
+    required DateTime date1,
+    required DateTime date2,
+    required int choice,
+    required int idOccupation,
+    required File file,
+  }) async {
+    emit(
+      InsertFileLoadingState(),
+    );
+
+    var response = await _curd.postRequestWithFile0(
+      AppLink.insertFileLink,
+      {
+        'name': name,
+        'address': address,
+        'owner': owner,
+        'number': number,
+        'ID_Card': idCard,
+        'phone': phone,
+        'date1': date1.toString(),
+        'date2': date2.toString(),
+        'choice': choice.toString(),
+        'ID_Occupancy': idOccupation.toString(),
+      },
+      file,
+    );
+    if (response['status'] == 'success') {
+      emit(InsertFileSuccessState());
+      if (kDebugMode) {
+        print(
+          'success',
+        );
+      }
+    } else {
+      emit(
+        InsertFileErrorState(),
+      );
+    }
+  }
+
+  insertFile1({
+    required String name,
+    required String address,
+    required String owner,
+    required String number,
+    required String idCard,
+    required String phone,
+    required DateTime date1,
+    required DateTime date2,
+    required int choice,
+    required int idOccupation,
+    required File file,
+    required File image,
+  }) async {
+    emit(
+      InsertFileLoadingState(),
+    );
+
+    var response = await _curd.postRequestWithFile1(
+      AppLink.insertFileLink,
+      {
+        'name': name,
+        'address': address,
+        'owner': owner,
+        'number': number,
+        'ID_Card': idCard,
+        'phone': phone,
+        'date1': date1.toString(),
+        'date2': date2.toString(),
+        'choice': choice.toString(),
+        'ID_Occupancy': idOccupation.toString(),
+      },
+      file,
+      image,
+    );
+    if (response['status'] == 'success') {
+      emit(InsertFileSuccessState());
+      if (kDebugMode) {
+        print(
+          'success',
+        );
+      }
+    } else {
+      emit(
+        InsertFileErrorState(),
+      );
+    }
+  }
+
+  insertFile2({
+    required String name,
+    required String address,
+    required String owner,
+    required String number,
+    required String idCard,
+    required String phone,
+    required DateTime date1,
+    required DateTime date2,
+    required int choice,
+    required int idOccupation,
+    required File file,
+    required File scan,
+  }) async {
+    emit(
+      InsertFileLoadingState(),
+    );
+
+    var response = await _curd.postRequestWithFile2(
+      AppLink.insertFileLink,
+      {
+        'name': name,
+        'address': address,
+        'owner': owner,
+        'number': number,
+        'ID_Card': idCard,
+        'phone': phone,
+        'date1': date1.toString(),
+        'date2': date2.toString(),
+        'choice': choice.toString(),
+        'ID_Occupancy': idOccupation.toString(),
+      },
+      file,
+      scan,
+    );
+    if (response['status'] == 'success') {
+      emit(InsertFileSuccessState());
+      if (kDebugMode) {
+        print(
+          'success',
+        );
+      }
+    } else {
+      emit(
+        InsertFileErrorState(),
+      );
+    }
+  }
+
   var facilityName = TextEditingController();
   var address = TextEditingController();
   var ownerName = TextEditingController();
