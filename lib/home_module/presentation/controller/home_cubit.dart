@@ -17,7 +17,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitialState());
 
   static HomeCubit get(context) => BlocProvider.of(context);
-
+  bool enable = false;
   final Curd _curd = Curd();
   Region? region;
   Place? place;
@@ -215,6 +215,31 @@ class HomeCubit extends Cubit<HomeState> {
     } else {
       emit(
         DeleteOccupationErrorState(),
+      );
+    }
+  }
+
+  updateOccupation({
+    required int id,
+    required String name,
+  }) async {
+    emit(
+      UpdateOccupationLoadingState(),
+    );
+    var response = await _curd.postRequest(AppLink.updateOccupationLink, {
+      'ID': id.toString(),
+      'name':name,
+    });
+    if (response['status'] == 'success') {
+      emit(
+        UpdateOccupationSuccessState(),
+      );
+      getOccupation(
+        id: idPlace2,
+      );
+    } else {
+      emit(
+        UpdateOccupationErrorState(),
       );
     }
   }

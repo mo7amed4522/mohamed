@@ -19,6 +19,8 @@ class AppLink {
       "$serverLink/occupancy/insertOccupancy.php";
   static const String deleteOccupationLink =
       "$serverLink/occupancy/deleteOccupancy.php ";
+  static const String updateOccupationLink =
+      "$serverLink/occupancy/updateOccupancy.php ";
   // ================================ Home filesData ========================= //
   static const String insertFileLink = "$serverLink/file/insertData.php";
   static const String getFilesLink = "$serverLink/file/getFilesData.php";

@@ -4,6 +4,7 @@ abstract class HomeState {
   const HomeState();
 }
 
+
 class HomeInitialState extends HomeState {}
 
 class RegionLoadingState extends HomeState {}
@@ -49,6 +50,12 @@ class InsertOccupationLoadingState extends HomeState {}
 class InsertOccupationSuccessState extends HomeState {}
 
 class InsertOccupationErrorState extends HomeState {}
+
+class UpdateOccupationLoadingState extends HomeState {}
+
+class UpdateOccupationSuccessState extends HomeState {}
+
+class UpdateOccupationErrorState extends HomeState {}
 
 class DeleteOccupationSuccessState extends HomeState {}
 

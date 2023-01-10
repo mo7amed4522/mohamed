@@ -17,7 +17,9 @@ class OccupationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var occupationController = TextEditingController();
+    var updateController = TextEditingController();
     var formKey = GlobalKey<FormState>();
+    var formKey2 = GlobalKey<FormState>();
     return Sizer(
       builder: (
         context,
@@ -317,48 +319,104 @@ class OccupationsScreen extends StatelessWidget {
                                                                 context) =>
                                                             AlertDialog(
                                                           title: const Text(
-                                                            "تغيير الاشغال",
+                                                              'تعديل'),
+                                                          content: Form(
+                                                            key: formKey2,
+                                                            child: Container(
+                                                              width: 50.w,
+                                                              margin:
+                                                                  const EdgeInsetsDirectional
+                                                                      .all(
+                                                                20.0,
+                                                              ),
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .all(
+                                                                10.0,
+                                                              ),
+                                                              decoration:
+                                                                  const BoxDecoration(
+                                                                color: Colors
+                                                                    .white,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .all(
+                                                                  Radius
+                                                                      .circular(
+                                                                    10.0,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              child:
+                                                                  defaultTextForm(
+                                                                color: Colors
+                                                                    .black,
+                                                                controller:
+                                                                    updateController,
+                                                                keyboardType:
+                                                                    TextInputType
+                                                                        .text,
+                                                                label:
+                                                                    'تعديل الاسم',
+                                                                prefix:
+                                                                    Icons.edit,
+                                                                onTap: () {},
+                                                                onChange:
+                                                                    (value) {},
+                                                                onSubmit:
+                                                                    (value) {},
+                                                                validate:
+                                                                    (String?
+                                                                        value) {
+                                                                  if (value!
+                                                                      .isEmpty) {
+                                                                    return ' ادخل اسم الاشغاله الجديد';
+                                                                  }
+                                                                },
+                                                              ),
+                                                            ),
                                                           ),
-                                                          actions: [
-                                                            Row(
-                                                              children: [
-                                                                defaultTextForm(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  controller:
-                                                                      TextEditingController(
-                                                                    text: HomeCubit.get(
-                                                                            context)
-                                                                        .occupation!
-                                                                        .data[
-                                                                            index]
-                                                                        .name!,
-                                                                  ),
-                                                                  keyboardType:
-                                                                      TextInputType
-                                                                          .emailAddress,
-                                                                  onTap: () {},
-                                                                  label: "",
-                                                                  prefix: Icons
-                                                                      .edit,
-                                                                  validate:
-                                                                      () {},
-                                                                ),
-                                                                GestureDetector(
-                                                                  child:
-                                                                      const Text(
-                                                                    "تعديل",
-                                                                  ),
-                                                                  onTap: () {},
-                                                                ),
-                                                                GestureDetector(
-                                                                  child:
-                                                                      const Text(
-                                                                    "حذف",
-                                                                  ),
-                                                                  onTap: () {},
-                                                                ),
-                                                              ],
+                                                          actions: <Widget>[
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      context,
+                                                                      'Cancel'),
+                                                              child: const Text(
+                                                                  'Cancel'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () {
+                                                                if (formKey2
+                                                                    .currentState!
+                                                                    .validate()) {
+                                                                  idOccupation2 = HomeCubit
+                                                                          .get(
+                                                                              context)
+                                                                      .occupation!
+                                                                      .data[
+                                                                          index]
+                                                                      .id!;
+                                                                  HomeCubit.get(
+                                                                          context)
+                                                                      .f = null;
+                                                                  HomeCubit.get(
+                                                                          context)
+                                                                      .updateOccupation(
+                                                                          id:
+                                                                              idOccupation2,
+                                                                          name:
+                                                                              updateController.text);
+                                                                  updateController
+                                                                      .text = "";
+                                                                  return Navigator
+                                                                      .pop(
+                                                                          context,
+                                                                          'ok');
+                                                                }
+                                                              },
+                                                              child: const Text(
+                                                                  'OK'),
                                                             ),
                                                           ],
                                                         ),

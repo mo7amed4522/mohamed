@@ -2,6 +2,9 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mohamed/home_module/presentation/screens/home_screen.dart';
+import 'package:mohamed/home_module/presentation/screens/occupations_screen.dart';
+import 'package:mohamed/home_module/presentation/screens/place_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'package:mohamed/core/func/sell_execute_services.dart';
 import 'package:mohamed/home_module/presentation/controller/home_cubit.dart';
@@ -9,7 +12,6 @@ import 'package:mohamed/home_module/presentation/screens/search_screen.dart';
 import '../../../core/func/filePicker.dart';
 import '../../../login_module/presentation/component/component.dart';
 import 'add_occupations_screen.dart';
-
 class EditeScreen extends StatelessWidget {
   const EditeScreen({Key? key}) : super(key: key);
 
@@ -52,6 +54,18 @@ class EditeScreen extends StatelessWidget {
                 ),
               ),
               actions: [
+                IconButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    if( HomeCubit.get(context).facilities == null){
+                      HomeCubit.get(context).deleteOccupation(id: idOccupation2, idRegion: idRegion2, idPlace: idPlace2);
+                      Navigator.pop(context);
+                    }
+                  },
+                  icon: const Icon(
+                    Icons.delete_forever,
+                  ),
+                ),
                 IconButton(
                   color: Colors.white,
                   onPressed: () {

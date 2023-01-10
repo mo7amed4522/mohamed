@@ -41,7 +41,7 @@ Widget defaultTextForm({
       },
       decoration: InputDecoration(
         errorStyle: const TextStyle(
-          color: Colors.white,
+          color: Colors.red,
           fontSize: 20.0,
           fontWeight: FontWeight.bold,
         ),
